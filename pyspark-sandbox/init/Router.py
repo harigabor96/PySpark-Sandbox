@@ -1,5 +1,5 @@
-from etl.SandboxPipeline import SandboxPipeline
-from init.Conf import Conf
+from etl import *
+from init import Conf
 from pyspark.sql import SparkSession
 
 

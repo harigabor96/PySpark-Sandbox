@@ -1,5 +1,4 @@
-from init.Conf import Conf
-from init.Router import Router
+from init import *
 from pyspark.sql import SparkSession
 
 
