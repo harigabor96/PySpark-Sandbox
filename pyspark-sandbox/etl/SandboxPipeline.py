@@ -9,16 +9,16 @@ class SandboxPipeline:
         self.raw_zone_path = raw_zone_path
         self.curated_zone_path = curated_zone_path
 
-        self.inputPath = self.raw_zone_path + "/{*}"
+        self.input_path = self.raw_zone_path + "/{*}"
 
-        self.inputSchema = StructType([
+        self.input_schema = StructType([
             StructField("sandbox_field", StringType(), True)
         ])
 
-        self.outputDatabaseName = "sandboxdb"
-        self.outputTableName = "sandboxtable"
-        self.outputDataRelativePath = f"{self.outputDatabaseName}.db/{self.outputTableName}/data"
-        self.outputCheckpointRelativePath = f"{self.outputDatabaseName}.db/{self.outputTableName}/checkpoint"
+        self.output_database_name = "sandboxdb"
+        self.output_table_name = "sandboxtable"
+        self.output_data_relative_path = f"{self.output_database_name}.db/{self.output_table_name}/data"
+        self.output_checkpoint_relative_path = f"{self.output_database_name}.db/{self.output_table_name}/checkpoint"
 
     def execute(self) -> None:
         self.__load(self.__transform(self.__extract()))
@@ -28,8 +28,8 @@ class SandboxPipeline:
             .readStream\
             .option("sep", ";")\
             .option("header", "true")\
-            .schema(self.inputSchema)\
-            .csv(self.inputPath)
+            .schema(self.input_schema)\
+            .csv(self.input_path)
 
     def __transform(self, extracted_df: DataFrame) -> DataFrame:
         return extracted_df
@@ -43,3 +43,16 @@ class SandboxPipeline:
             .option("truncate", False)\
             .start()\
             .awaitTermination()
+        """
+        self.spark.sql(f"CREATE DATABASE IF NOT EXISTS {self.output_database_name}")
+
+        transformed_df\
+            .writeStream\
+            .trigger(availableNow=True)\
+            .outputMode("append")\
+            .format("delta")\
+            .option("path", self.output_data_relative_path)\
+            .option("checkpointLocation", f"{self.curated_zone_path}/{self.output_checkpoint_relative_path}")\
+            .toTable(f"{self.output_database_name}.{self.output_table_name}")\
+            .awaitTermination()
+        """
