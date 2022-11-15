@@ -9,7 +9,7 @@ class Router:
     def execute_pipeline(spark: SparkSession, conf: Conf):
         if conf.pipeline == "sandbox-pipeline":
            bronzesilvergold.tables.sandbox_table \
-               .Pipeline(spark, conf.raw_zone_path, conf.curated_zone_path).execute()
+               .Pipeline(spark, conf.raw_zone_path).execute()
         elif conf.pipeline == "sandbox-query":
            platinum.queries.sandbox_query \
                .Query(spark).execute().show(20, False)
