@@ -2,7 +2,7 @@ from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType
 
 
-class SandboxPipeline:
+class Query:
 
     def __init__(self, spark: SparkSession, raw_zone_path, curated_zone_path):
         self.spark = spark

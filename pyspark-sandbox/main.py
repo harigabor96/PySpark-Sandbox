@@ -3,7 +3,12 @@ from pyspark.sql import SparkSession
 
 
 if __name__ == '__main__':
-    conf = Conf("local", "../storage/curated/", "sandbox-pipeline", "../storage/raw/")
+    conf = Conf(
+        "../storage/raw/",
+        "../storage/curated/",
+        #"sandbox-pipeline",
+        "sandbox-query"
+    )
 
     spark = SparkSession \
         .builder \
@@ -12,7 +17,7 @@ if __name__ == '__main__':
         .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
         .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
         .config("spark.sql.warehouse.dir", conf.curated_zone_path) \
-        .master(conf.master) \
+        .master("local") \
         .getOrCreate()
 
     spark.sparkContext.setLogLevel("ERROR")
