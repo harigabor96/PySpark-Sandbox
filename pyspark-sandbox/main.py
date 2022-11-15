@@ -23,4 +23,4 @@ if __name__ == '__main__':
 
     spark.sparkContext.setLogLevel("ERROR")
 
-    Router.execute_pipeline(spark, conf)
+    SparkApp.run(spark, conf)

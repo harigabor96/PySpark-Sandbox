@@ -3,10 +3,10 @@ from init import Conf
 from pyspark.sql import SparkSession
 
 
-class Router:
+class SparkApp:
 
     @staticmethod
-    def execute_pipeline(spark: SparkSession, conf: Conf):
+    def run(spark: SparkSession, conf: Conf):
         if conf.pipeline == "sandbox-pipeline":
            bronzesilvergold.tables.sandbox_table \
                .Pipeline(spark).execute()
