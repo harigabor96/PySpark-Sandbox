@@ -9,7 +9,7 @@ class HiveHelper:
             CREATE DATABASE IF NOT EXISTS {database_name};
         """)
         spark.sql(f"""
-            CREATE TABLE IF NOT EXISTS $databaseName.$tableName
+            CREATE TABLE IF NOT EXISTS {database_name}.{table_name}
             USING DELTA
             LOCATION '../{curated_zone_path}/{database_name}.db/{table_name}/data';
         """)
