@@ -4,12 +4,11 @@ from pyspark.sql import SparkSession, DataFrame
 
 class Query:
 
-    def __init__(self, spark: SparkSession, curated_zone_path):
+    def __init__(self, spark: SparkSession):
         self.spark = spark
-        self.curated_zone_path = curated_zone_path
 
     def execute(self) -> DataFrame:
-        HiveHelper.setup_metastore(self.spark, self.curated_zone_path, "sandboxdb", "sandboxtable")
+        HiveHelper.setup_metastore(self.spark, "sandboxdb", "sandboxtable")
         return \
             self.spark.sql(f"""
               SELECT *

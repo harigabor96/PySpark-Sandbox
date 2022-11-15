@@ -12,6 +12,6 @@ class Router:
                .Pipeline(spark, conf.raw_zone_path, conf.curated_zone_path).execute()
         elif conf.pipeline == "sandbox-query":
            platinum.queries.sandbox_query \
-               .Query(spark, conf.curated_zone_path).execute().show(20, False)
+               .Query(spark).execute().show(20, False)
         else:
             raise Exception("Pipeline is not registered in the router!")
