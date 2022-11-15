@@ -17,6 +17,7 @@ if __name__ == '__main__':
         .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
         .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
         .config("spark.sql.warehouse.dir", conf.curated_zone_path) \
+        .config("spark.custom.raw.dir", conf.raw_zone_path) \
         .master("local") \
         .getOrCreate()
 

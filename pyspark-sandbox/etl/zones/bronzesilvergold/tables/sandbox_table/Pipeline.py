@@ -4,11 +4,12 @@ from pyspark.sql.types import StructType, StructField, StringType
 
 class Pipeline:
 
-    def __init__(self, spark: SparkSession, raw_zone_path):
+    def __init__(self, spark: SparkSession):
         self.spark = spark
+        self.raw_zone_path = spark.conf.get("spark.custom.raw.dir")
         self.curated_zone_path = spark.conf.get("spark.sql.warehouse.dir")
 
-        self.input_path = raw_zone_path + "/{*}"
+        self.input_path = self.raw_zone_path + "/{*}"
         self.input_schema = StructType([
             StructField("sandbox_field", StringType(), True)
         ])
