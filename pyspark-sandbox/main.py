@@ -6,8 +6,8 @@ if __name__ == '__main__':
     conf = Conf(
         "../storage/raw/",
         "../storage/curated/",
-        #"sandbox-pipeline",
-        "sandbox-query"
+        "sandbox-pipeline",
+        #"sandbox-query"
     )
 
     spark = SparkSession \
