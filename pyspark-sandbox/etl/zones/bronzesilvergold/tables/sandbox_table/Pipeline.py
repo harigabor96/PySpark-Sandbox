@@ -1,15 +1,15 @@
+from init import Conf
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType
 
 
 class Pipeline:
 
-    def __init__(self, spark: SparkSession):
+    def __init__(self, spark: SparkSession, conf: Conf):
         self.spark = spark
-        self.raw_zone_path = spark.conf.get("spark.custom.raw.dir")
-        self.curated_zone_path = spark.conf.get("spark.sql.warehouse.dir")
+        self.conf = conf
 
-        self.input_path = self.raw_zone_path + "/{*}"
+        self.input_path = conf.raw_zone_path + "/{*}"
         self.input_schema = StructType([
             StructField("sandbox_field", StringType(), True)
         ])
@@ -42,6 +42,6 @@ class Pipeline:
             .outputMode("append") \
             .format("delta") \
             .option("path", self.output_data_relative_path) \
-            .option("checkpointLocation", f"{self.curated_zone_path}/{self.output_checkpoint_relative_path}") \
+            .option("checkpointLocation", f"{self.conf.curated_zone_path}/{self.output_checkpoint_relative_path}") \
             .toTable(f"{self.output_database_name}.{self.output_table_name}") \
             .awaitTermination()

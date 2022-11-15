@@ -1,11 +1,13 @@
 from etl.utils import HiveHelper
+from init import Conf
 from pyspark.sql import SparkSession, DataFrame
 
 
 class Query:
 
-    def __init__(self, spark: SparkSession):
+    def __init__(self, spark: SparkSession, conf: Conf):
         self.spark = spark
+        self.conf = conf
 
     def execute(self) -> DataFrame:
         HiveHelper.setup_metastore(self.spark, "sandboxdb", "sandboxtable")
