@@ -5,8 +5,8 @@ def main():
     conf = Conf(
         "../storage/raw/",
         "../storage/curated/",
-        #"sandbox-pipeline",
-        "sandbox-query"
+        "sandbox-pipeline",
+        #"sandbox-query"
     )
 
     spark = SparkSession \

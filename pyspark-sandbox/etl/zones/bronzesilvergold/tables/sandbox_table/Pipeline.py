@@ -1,8 +1,9 @@
 from init import Conf
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType
+from etl.utils import GenericPipeline
 
-class Pipeline:
+class Pipeline(GenericPipeline):
 
     def __init__(self, spark: SparkSession, conf: Conf):
         self.spark = spark
@@ -19,9 +20,9 @@ class Pipeline:
         self.output_checkpoint_relative_path = f"{self.output_database_name}.db/{self.output_table_name}/checkpoint"
 
     def execute(self) -> None:
-        self.__load(self.__transform(self.__extract()))
+        self._load(self._transform(self._extract()))
 
-    def __extract(self) -> DataFrame:
+    def _extract(self) -> DataFrame:
         return self.spark \
             .readStream \
             .option("sep", ";") \
@@ -29,10 +30,10 @@ class Pipeline:
             .schema(self.input_schema) \
             .csv(self.input_path)
 
-    def __transform(self, extracted_df: DataFrame) -> DataFrame:
+    def _transform(self, extracted_df: DataFrame) -> DataFrame:
         return extracted_df
 
-    def __load(self, transformed_df: DataFrame) -> None:
+    def _load(self, transformed_df: DataFrame) -> None:
         self.spark.sql(f"CREATE DATABASE IF NOT EXISTS {self.output_database_name}")
 
         transformed_df \
