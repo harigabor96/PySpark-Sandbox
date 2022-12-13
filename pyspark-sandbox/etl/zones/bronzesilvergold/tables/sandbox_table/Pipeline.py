@@ -2,7 +2,6 @@ from init import Conf
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType
 
-
 class Pipeline:
 
     def __init__(self, spark: SparkSession, conf: Conf):

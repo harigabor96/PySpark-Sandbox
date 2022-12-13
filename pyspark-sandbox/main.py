@@ -1,8 +1,7 @@
 from init import *
 from pyspark.sql import SparkSession
 
-
-if __name__ == '__main__':
+def main():
     conf = Conf(
         "../storage/raw/",
         "../storage/curated/",
@@ -23,3 +22,6 @@ if __name__ == '__main__':
     spark.sparkContext.setLogLevel("ERROR")
 
     SparkApp.run(spark, conf)
+
+if __name__ == '__main__':
+    main()

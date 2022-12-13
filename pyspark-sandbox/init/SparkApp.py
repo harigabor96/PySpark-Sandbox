@@ -2,7 +2,6 @@ from etl.zones import *
 from init import Conf
 from pyspark.sql import SparkSession
 
-
 class SparkApp:
 
     @staticmethod
