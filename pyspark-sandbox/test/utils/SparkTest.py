@@ -2,7 +2,7 @@ import unittest
 from pyspark.sql import SparkSession
 
 
-class SharedSparkSession(unittest.TestCase):
+class SparkTest(unittest.TestCase):
 
     def setUp(self):
         self.spark = \
