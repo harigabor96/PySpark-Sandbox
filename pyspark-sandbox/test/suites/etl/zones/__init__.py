@@ -1,1 +1,0 @@
-from .bronzesilvergold import tables
