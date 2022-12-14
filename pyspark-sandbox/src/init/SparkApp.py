@@ -1,5 +1,5 @@
-from etl.zones import *
-from init import Conf
+from src.etl.zones import *
+from src.init import Conf
 from pyspark.sql import SparkSession
 
 class SparkApp:

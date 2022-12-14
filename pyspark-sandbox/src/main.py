@@ -3,10 +3,10 @@ from pyspark.sql import SparkSession
 
 def main():
     conf = Conf(
-        "../storage/raw/",
-        "../storage/curated/",
-        "sandbox-pipeline",
-        #"sandbox-query"
+        "../../../storage/raw/",
+        "../../storage/curated/",
+        #"sandbox-pipeline",
+        "sandbox-query"
     )
 
     spark = SparkSession \

@@ -1,7 +1,7 @@
-from init import Conf
+from src.init import Conf
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType
-from etl.utils import GenericPipeline
+from src.etl.utils import GenericPipeline
 
 class Pipeline(GenericPipeline):
 

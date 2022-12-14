@@ -1,5 +1,5 @@
-from etl.utils import HiveHelper
-from init import Conf
+from src.etl.utils import HiveHelper
+from src.init import Conf
 from pyspark.sql import SparkSession, DataFrame
 
 class Query:
