@@ -1,11 +1,10 @@
 from src.etl.zones import *
-from src.init import Conf
 from pyspark.sql import SparkSession
 
 class SparkApp:
 
     @staticmethod
-    def run(spark: SparkSession, conf: Conf):
+    def run(spark: SparkSession, conf: argparse.Namespace):
         if conf.pipeline == "sandbox-pipeline":
            bronzesilvergold.tables.sandbox_table \
                .Pipeline(spark, conf).execute()

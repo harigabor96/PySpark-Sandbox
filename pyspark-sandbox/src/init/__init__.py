@@ -1,2 +1,2 @@
-from .Conf import *
+from .ConfFactory import *
 from .SparkApp import *

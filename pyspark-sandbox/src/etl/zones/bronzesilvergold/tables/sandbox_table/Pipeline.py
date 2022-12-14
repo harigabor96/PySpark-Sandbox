@@ -1,11 +1,11 @@
-from src.init import Conf
+import argparse
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType
 from src.etl.utils import GenericPipeline
 
 class Pipeline(GenericPipeline):
 
-    def __init__(self, spark: SparkSession, conf: Conf):
+    def __init__(self, spark: SparkSession, conf: argparse.Namespace):
         self.spark = spark
         self.conf = conf
 

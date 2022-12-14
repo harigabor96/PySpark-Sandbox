@@ -1,10 +1,10 @@
+import argparse
 from src.etl.utils import HiveHelper
-from src.init import Conf
 from pyspark.sql import SparkSession, DataFrame
 
 class Query:
 
-    def __init__(self, spark: SparkSession, conf: Conf):
+    def __init__(self, spark: SparkSession, conf: argparse.Namespace):
         self.spark = spark
         self.conf = conf
 
