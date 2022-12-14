@@ -14,5 +14,5 @@ class ConfFactory:
     def get_conf(args: list[str]) -> argparse.Namespace:
         return \
             ConfFactory \
-                .create_parser()\
+                .create_parser() \
                 .parse_args(args)
