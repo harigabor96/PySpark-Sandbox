@@ -12,6 +12,7 @@ setup(
     'group_1': 'run=src.__main__:main'
   },
   install_requires=[
-    'setuptools'
+    'setuptools',
+    'wheel'
   ]
 )
