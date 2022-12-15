@@ -1,5 +1,6 @@
 # PySpark-Sandbox
 A lightweight sandbox for prototyping with PySpark.
 
-## Backlog
-- Figuring out how to run all unit tests from terminal, probably by swithing to PyTest.
+## Notes
+- Create wheel: py setup.py bdist_wheel
+- Run Tests: py -m unittest test
