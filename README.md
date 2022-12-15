@@ -2,5 +2,4 @@
 A lightweight sandbox for prototyping with PySpark.
 
 ## Backlog
-- wheel
-- .gitignore
+- Figuring out how to run all unit tests from terminal.
