@@ -1,1 +1,1 @@
-from .etl.zones.bronzesilvergold.tables.sandbox_table.Bronzesilvergold_Sandbox_Table_Pipeline import *
+from .etl.zones.bronzesilvergold.tables.sandbox_table.test_bronzesilvergold_sandbox_table_pipeline import *
