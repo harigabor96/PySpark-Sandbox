@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
   name='pyspark_sandbox',
   version='1.0.0',
-  author="Unknown User",
+  author='Unknown User',
   url='https://github.com/',
   author_email='unknown@gmail.com',
   description='pyspark sandbox',
