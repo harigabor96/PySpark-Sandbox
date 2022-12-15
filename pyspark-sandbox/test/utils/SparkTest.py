@@ -1,7 +1,6 @@
 import unittest
 from pyspark.sql import SparkSession
 
-
 class SparkTest(unittest.TestCase):
 
     def setUp(self):
