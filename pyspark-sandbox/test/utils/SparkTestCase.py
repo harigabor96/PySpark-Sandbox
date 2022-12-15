@@ -1,10 +1,11 @@
 import unittest
 from pyspark.sql import SparkSession
 
-class SparkTest(unittest.TestCase):
+class SparkTestCase(unittest.TestCase):
 
-    def setUp(self):
-        self.spark = \
+    @classmethod
+    def setUpClass(cls):
+        cls.spark = \
             SparkSession \
                 .builder \
                 .appName("Test") \
@@ -15,5 +16,5 @@ class SparkTest(unittest.TestCase):
                 .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
                 .getOrCreate()
 
-        self.spark \
+        cls.spark \
             .sparkContext.setLogLevel("ERROR")
