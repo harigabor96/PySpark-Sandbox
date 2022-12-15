@@ -3,16 +3,14 @@ from init import *
 from pyspark.sql import SparkSession
 
 def main():
-    conf = ConfFactory.get_conf(sys.argv)
+    # conf = ConfFactory.get_conf(sys.argv)
 
-    """
     conf = ConfFactory.get_conf([
         "-r", "../../storage/raw/",
         "-c", "../../storage/curated/",
         #"-p", "sandbox-pipeline",
         "-p", "sandbox-query"
     ])
-    """
 
     spark = SparkSession \
         .builder \
