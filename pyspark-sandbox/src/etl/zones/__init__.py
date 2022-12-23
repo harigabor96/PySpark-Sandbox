@@ -1,2 +1,2 @@
 from .bronzesilvergold import *
-from .platinum import *
+from .diamond import *
